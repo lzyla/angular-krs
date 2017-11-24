@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="krsapp">
+<head>
+	<meta charset="utf-8">
+	<title>KRS</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body >
+<div id="wrapper" class="container" ng-controller="krsappController">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title text-center">Wpisz KRS i sprawdź firmę</h2>
+					</div>
+					<div class="panel-body">
+						<label class="sr-only" for id="inputKrs"></label>
+
+						<select ng-model="searchBy">
+							<option value="krs_podmioty.krs">Szukaj po KRS</option>
+							<option value="q">Szukaj po nazwie</option>
+						</select>
+					 	<input class="form-control" type="text" id="inputKRS" name="KRS" placeholder="000000000" ng-model="inputKrs" my-enter="getData()">
+					 	<div class="text-center alert alert-danger" role="alert" ng-show="krsfailed">Nie ma takiego KRSu</div>
+					 	<br>
+					 	<button type="submit" class="btn btn-primary btn-block" ng-click="getData()">Wyszukaj</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<section id="data-entities">
+					<div class="panel panel-default">
+				 		<div class="panel-heading">
+				 		 	<h2 class="panel-title text-center">Nazwa organizacji</h2>
+				 		</div>
+				 		<div class="panel-body">
+				 			 <h3 class="text-center">{{name}}</h3>
+				 		</div>
+				 	</div>
+				 	<div class="panel panel-default">
+				 		<div class="panel-heading">
+				 		 	<h2 class="panel-title text-center">Adres</h2>
+				 		</div>
+				 		<div class="panel-body">
+				 			<h3 class="text-center">{{adress}}</h3>
+				 		</div>
+				 	</div>
+				 	<div class="panel panel-default">
+				 		<div class="panel-heading">
+				 		 	<h2 class="panel-title text-center">Strona internetowa</h2>
+				 		</div>
+				 		<div class="panel-body">
+				 			<h3 class="text-center">{{www}}</h3>
+				 		</div>
+				 	</div>
+				 	<div class="panel panel-default">
+				 		<div class="panel-heading">
+				 		 	<h2 class="panel-title text-center">Forma prawna</h2>
+				 		</div>
+				 		<div class="panel-body">
+				 			<h3 class="text-center">{{type}}</h3>
+				 		</div>
+				 	</div>	
+				</section>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
